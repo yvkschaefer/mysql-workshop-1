@@ -46,8 +46,8 @@ $ mysql -u<USERNAME> -p<PASSWORD>
 * For every exercise in this Workshop:
   * Create a new branch off from "master" named "exercise-n"
   * Create a new file named "exercise-n.txt", containing:
-    * The SQL Query used, when applicable
-    * The SQL Query results, when applicable
+    * The SQL Statement used, when applicable
+    * The SQL Statement results, when applicable
   * Create a pull request
 
 
