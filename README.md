@@ -21,7 +21,6 @@ $ mysql-ctl start
 
 # Connect to the MySQL Instance
 $ mysql -u<USERNAME> -p<PASSWORD>
-
 ```
 
 ### Database Statements
