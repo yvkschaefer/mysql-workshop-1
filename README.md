@@ -41,9 +41,8 @@ $ mysql -u<USERNAME> -p<PASSWORD>
 
 ## Workshop Instructions
 
+* Fork this repository
 * Create a new Cloud9 Workspace
-* Fork this repository to your new Workspace
-
 * For every exercise in this Workshop:
   * Create a new branch off from "master" named "exercise-n"
   * Create a new file named "exercise-n.txt", containing:
