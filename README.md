@@ -37,7 +37,7 @@ $ mysql -u<USERNAME> -p<PASSWORD>
 * [Alter Table](http://dev.mysql.com/doc/refman/5.7/en/alter-table.html)
 * [Truncate Table](http://dev.mysql.com/doc/refman/5.7/en/truncate-table.html)
 * [Drop Table](http://dev.mysql.com/doc/refman/5.7/en/drop-table.html)
-
+* [Describe Table](https://dev.mysql.com/doc/refman/5.7/en/show-columns.html)
 
 ## Workshop Instructions
 
