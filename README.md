@@ -1,5 +1,6 @@
 # MySQL Workshop 1 - Databases & Data Types
 
+<img src="http://cdn.meme.am/instances2/500x/1987955.jpg" border="0" width="850">
 
 ## Workshop Contents
 
