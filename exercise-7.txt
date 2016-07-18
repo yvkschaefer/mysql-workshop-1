@@ -1,0 +1,6 @@
+//Exercise 7
+//Return list of tables within database decodemtl_addressbook
+
+//enter mysql with username yvkschaefer
+//\u decodemtl_addressbook
+//show tables;
