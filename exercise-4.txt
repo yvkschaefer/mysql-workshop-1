@@ -1,0 +1,4 @@
+//Exercise 4
+//Return the list of databases within MySQL
+
+//after going into mysql, put in the command: show databases;
