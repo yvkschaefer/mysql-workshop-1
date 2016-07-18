@@ -1,0 +1,3 @@
+//Exercise 2
+//Create a database named decodemtl_test within MySQL
+//Create a database named decodemtl_addressbook within MySQL
