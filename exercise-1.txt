@@ -1,0 +1,16 @@
+//Exercise 1
+//Connect to the MySQL instance within your Workspace using your Cloud9 username
+
+//start MySQL. Will create an empty database on first start
+//mysql-ctl start
+
+//to connect to your database just use `mysql -u <YOUR USERNAME>` YOU DO NOT NEED A PASSWORD
+
+
+
+//Also perhaps useful:
+//stop MySQL
+//mysql-ctl stop
+
+//run the MySQL interactive shell
+//mysql-ctl cli
