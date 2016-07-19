@@ -1,2 +1,5 @@
 //Exercise 3
 //Remove database named decodemtl_test from MySQL
+
+mysql> drop database decodemtl_test;
+Query OK, 0 rows affected (0.00 sec)
