@@ -1,0 +1,144 @@
+Exercise 9
+Create a data model representing a Barn with Chickens 🐣
+This model should provide answers to the following questions:
+How many rooster, hen and chicks existed in the Barn on a specific date //line 120
+How many chicks will come to age on a specific date
+
+mysql> create database barn_with_chickens;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++-----------------------+
+| Database              |
++-----------------------+
+| information_schema    |
+| barn_with_chickens    |
+| c9                    |
+| decodemtl_addressbook |
+| mysql                 |
+| performance_schema    |
+| phpmyadmin            |
++-----------------------+
+7 rows in set (0.00 sec)
+
+mysql> \u barn_with_chickens
+Database changed
+
+
+mysql> create table Fowl(id INT AUTO_INCREMENT PRIMARY KEY, type enum('rooster', 'hen', 'chick'), dateOfBirth DATETIME);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> describe Fowl;
++-------------+-------------------------------+------+-----+---------+----------------+
+| Field       | Type                          | Null | Key | Default | Extra          |
++-------------+-------------------------------+------+-----+---------+----------------+
+| id          | int(11)                       | NO   | PRI | NULL    | auto_increment |
+| type        | enum('rooster','hen','chick') | YES  |     | NULL    |                |
+| dateOfBirth | datetime                      | YES  |     | NULL    |                |
++-------------+-------------------------------+------+-----+---------+----------------+
+3 rows in set (0.03 sec)
+
+//deleted from this thread: me populating the table with roosters and hens but I wasn't putting the dateOfBirth in a string
+
+
+mysql> insert into Fowl (type, dateOfBirth) values ('rooster', '2011-01-05'), ('rooster', '2013-09-07'), ('rooster', '2015-02-18'), ('rooster', '2016-01-01'), ('rooster', '2012-09-04'), ('hen', '2011-05-05'), ('hen', 2012-12-12), ('hen                                                                          
+', 2013-07-08);
+Query OK, 8 rows affected, 3 warnings (0.01 sec)
+Records: 8  Duplicates: 0  Warnings: 3
+
+mysql> select * from Fowl;
++----+---------+---------------------+
+| id | type    | dateOfBirth         |
++----+---------+---------------------+
+|  1 | rooster | 0000-00-00 00:00:00 |
+|  2 | rooster | 0000-00-00 00:00:00 |
+|  3 | rooster | 0000-00-00 00:00:00 |
+|  4 | rooster | 0000-00-00 00:00:00 |
+|  5 | rooster | 0000-00-00 00:00:00 |
+|  6 | hen     | 0000-00-00 00:00:00 |
+|  7 | hen     | 0000-00-00 00:00:00 |
+|  8 |         | 0000-00-00 00:00:00 |
+|  9 | rooster | 2011-01-05 00:00:00 |
+| 10 | rooster | 2013-09-07 00:00:00 |
+| 11 | rooster | 2015-02-18 00:00:00 |
+| 12 | rooster | 2016-01-01 00:00:00 |
+| 13 | rooster | 2012-09-04 00:00:00 |
+| 14 | hen     | 2011-05-05 00:00:00 |
+| 15 | hen     | 0000-00-00 00:00:00 |
+| 16 |         | 0000-00-00 00:00:00 |
++----+---------+---------------------+
+16 rows in set (0.00 sec)
+
+mysql> delete from Fowl where dateOfBirth=0;
+Query OK, 10 rows affected (0.02 sec)
+
+mysql> select * from Fowl;
++----+---------+---------------------+
+| id | type    | dateOfBirth         |
++----+---------+---------------------+
+|  9 | rooster | 2011-01-05 00:00:00 |
+| 10 | rooster | 2013-09-07 00:00:00 |
+| 11 | rooster | 2015-02-18 00:00:00 |
+| 12 | rooster | 2016-01-01 00:00:00 |
+| 13 | rooster | 2012-09-04 00:00:00 |
+| 14 | hen     | 2011-05-05 00:00:00 |
++----+---------+---------------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into Fowl (type, dateOfBirth) values ('hen', '2012-12-12'), ('hen', '2013-01-10'), ('hen', '2016-08-09'), ('hen', '2015-06-12');
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+
+mysql> insert into Fowl (type, dateOfBirth) values ('chick', '2011-11-11'), ('chick', '2013-09-09'), ('chick', '2015-04-04'), ('chick', '2016-12-04'), ('chick', '2014-01-01');
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from Fowl;
++----+---------+---------------------+
+| id | type    | dateOfBirth         |
++----+---------+---------------------+
+|  9 | rooster | 2011-01-05 00:00:00 |
+| 10 | rooster | 2013-09-07 00:00:00 |
+| 11 | rooster | 2015-02-18 00:00:00 |
+| 12 | rooster | 2016-01-01 00:00:00 |
+| 13 | rooster | 2012-09-04 00:00:00 |
+| 14 | hen     | 2011-05-05 00:00:00 |
+| 17 | hen     | 2012-12-12 00:00:00 |
+| 18 | hen     | 2013-01-10 00:00:00 |
+| 19 | hen     | 2016-08-09 00:00:00 |
+| 20 | hen     | 2015-06-12 00:00:00 |
+| 21 | chick   | 2011-11-11 00:00:00 |
+| 22 | chick   | 2013-09-09 00:00:00 |
+| 23 | chick   | 2015-04-04 00:00:00 |
+| 24 | chick   | 2016-12-04 00:00:00 |
+| 25 | chick   | 2014-01-01 00:00:00 |
++----+---------+---------------------+
+15 rows in set (0.00 sec)
+
+
+mysql> select count(*) from Fowl where dateOfBirth>'2014-01-01';
++----------+
+| count(*) |
++----------+
+|        6 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from Fowl where dateOfBirth>'2014-01-01' and type='chick';
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select count(*) from Fowl where dateOfBirth>'2012-01-01' and type='chick';
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> 
