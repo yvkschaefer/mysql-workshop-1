@@ -1,9 +1,146 @@
 Exercise 8
 
 Reflect the data model shown in schema/addressbook_denormalized.png within database 
-decodemtl_addressbook
+decodemtl_addressbook, found this under the folder schema, picture file.
 Account.id is a primary auto-increment key
 AddressBook.id is a primary auto-increment key
 Entry.id is a primary auto-increment key
 Entry.type is an ENUM column permitting home, work and other
 Entry.subtype is an ENUM column permitting phone, address and email
+
+mysql> \u decodemtl_addressbook
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> Create table Account(id INT, email varchar(255), password varchar(40), createdOn DATETIME, modifiedOn DATETIME);
+ERROR 1050 (42S01): Table 'Account' already exists
+mysql> drop table Account;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table Account(id INT, email varchar(255), password varchar(40), createdOn DATETIME, modifiedOn DATETIME);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
++---------------------------------+
+1 row in set (0.00 sec)
+
+
+mysql> Create Table AddressBook(id INT, accountId INT, name varchar(255), createdOn DATETIME, modifiedOn DATETIME);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
+| AddressBook                     |
++---------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> create table Entry(id INT AUTO_INCREMENT PRIMARY KEY, addressBookId INT, firstName varchar(255), lastName varchar(255), birthday DATETIME, type enum('home', 'work', 'other'), subtype enum('phone', 'address', 'email
+    '> show tables;
+    '> ;
+    '> help;
+    '> \c
+    '> ^c
+    '> \c
+    '> \q
+    '> quit;
+    '> '
+    -> \c
+
+mysql> create table Entry(id INT AUTO_INCREMENT PRIMARY KEY, addressBookId INT, firstName varchar(255), lastName varchar(255), birthday DATETIME, type enum('home', 'work', 'other'), subtype enum('phone', 'address', 'email'), contentLineOne varchar(255), contentLineTwo varchar(255), contentLineThree varchar(255), contentLineFour varchar(255), contentLineFive varchar(255));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
+| AddressBook                     |
+| Entry                           |
++---------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> describe Account;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id         | int(11)      | YES  |     | NULL    |       |
+| email      | varchar(255) | YES  |     | NULL    |       |
+| password   | varchar(40)  | YES  |     | NULL    |       |
+| createdOn  | datetime     | YES  |     | NULL    |       |
+| modifiedOn | datetime     | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> describe AddressBook;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id         | int(11)      | YES  |     | NULL    |       |
+| accountId  | int(11)      | YES  |     | NULL    |       |
+| name       | varchar(255) | YES  |     | NULL    |       |
+| createdOn  | datetime     | YES  |     | NULL    |       |
+| modifiedOn | datetime     | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> describe Entry;
++------------------+---------------------------------+------+-----+---------+----------------+
+| Field            | Type                            | Null | Key | Default | Extra          |
++------------------+---------------------------------+------+-----+---------+----------------+
+| id               | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| addressBookId    | int(11)                         | YES  |     | NULL    |                |
+| firstName        | varchar(255)                    | YES  |     | NULL    |                |
+| lastName         | varchar(255)                    | YES  |     | NULL    |                |
+| birthday         | datetime                        | YES  |     | NULL    |                |
+| type             | enum('home','work','other')     | YES  |     | NULL    |                |
+| subtype          | enum('phone','address','email') | YES  |     | NULL    |                |
+| contentLineOne   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineTwo   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineThree | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFour  | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFive  | varchar(255)                    | YES  |     | NULL    |                |
++------------------+---------------------------------+------+-----+---------+----------------+
+12 rows in set (0.00 sec)
+
+mysql> Alter Table Account modify column id INT AUTO_INCREMENT PRIMARY KEY;                            
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe Account;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| email      | varchar(255) | YES  |     | NULL    |                |
+| password   | varchar(40)  | YES  |     | NULL    |                |
+| createdOn  | datetime     | YES  |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+
+mysql> Alter Table AddressBook modify column id INT AUTO_INCREMENT PRIMARY KEY;                       
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe AddressBook;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| accountId  | int(11)      | YES  |     | NULL    |                |
+| name       | varchar(255) | YES  |     | NULL    |                |
+| createdOn  | datetime     | YES  |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> 
