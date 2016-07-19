@@ -1,0 +1,9 @@
+Exercise 8
+
+Reflect the data model shown in schema/addressbook_denormalized.png within database 
+decodemtl_addressbook
+Account.id is a primary auto-increment key
+AddressBook.id is a primary auto-increment key
+Entry.id is a primary auto-increment key
+Entry.type is an ENUM column permitting home, work and other
+Entry.subtype is an ENUM column permitting phone, address and email
